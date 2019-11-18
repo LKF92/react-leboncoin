@@ -1,22 +1,254 @@
-.App {
-  text-align: center;
+@import "normalize.css";
+
+/****** GLOBAL ******/
+:root {
+  --orange: #f56b2a;
+  --light-grey: #fafafa;
+  --dark-grey: #474747;
+  --blue: #4183d7;
+  --dark-blue: #356699;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--light-grey);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/****** NAVBAR ******/
+nav {
+  padding: 10px 50px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  border: none;
+  background-color: white;
+  box-shadow: 0px 1px 10px lightgrey;
+}
+.navbar__left-bloc {
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}
+.search-bar {
+  border: none;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+.search-bar input {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 200px;
+}
+.search-bar ::-webkit-input-placeholder {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.login-icon {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.login-icon p {
+  font-size: 0.8em;
+}
+
+/****** HOME SEACRH BOX ******/
+.home-search-box {
+  margin: 35px auto;
+  width: 810px;
+  height: 130px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.home-search-box .search-bar {
+  padding: 13px 50px;
+  background-color: var(--light-grey);
+}
+button {
+  outline: none;
+  width: 220px;
+  height: 44px;
+  color: white;
+  font-size: 1em;
+  background-color: none;
+  border-radius: 5px;
+}
+.home-search-box button {
+  margin-left: 20px;
+  background-color: var(--blue);
+}
+
+/****** PRODUCTS LIST *******/
+.products-lists {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+/****** PRODUCT CARD *******/
+.item-card {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  border-radius: 5px;
+  background-color: white;
+  margin: 20px 0;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px lightgrey;
+}
+.item-img {
+  width: 240px;
+  height: 100%;
+  object-fit: cover;
+}
+.item-description {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 20px;
+  flex: 1 1 auto;
+  justify-content: space-between;
+}
+.item-title {
+  font-size: 22px;
+  line-height: 26px;
+}
+.item-price {
+  font-size: 20px;
+  line-height: 23px;
+  color: var(--orange);
+}
+.item-date {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+/****** PAGES BUTTONS ******/
+.page-buttons {
+  width: 50vw;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.page-btn {
+  cursor: pointer;
+  padding: 5px;
+  background-color: none;
+  border: none;
+  color: var(--dark-blue);
+}
+.current-page-btn {
+  padding: 5px;
+  background-color: var(--orange);
+  border: none;
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+/****** FOOTER ******/
+footer {
+  background-color: var(--dark-grey);
+}
+footer > p {
+  line-height: 8vh;
+  color: white;
+  text-align: center;
+}
+
+/****** PRODUCT PAGE ******/
+/****** PRODUCT CARD ******/
+.product-description {
+  width: 700px;
+  height: 600px;
+  margin: 40px 0;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px lightgrey;
+  background-color: white;
+}
+
+/****** MODAL ******/
+.modal-page {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(80, 80, 80, 0.8);
+  position: fixed;
+  z-index: 10;
+}
+.modal-card {
+  font-weight: bold;
+  position: absolute;
+  top: 15vh;
+  left: 25vw;
+  background-color: white;
+  width: 50vw;
+  height: 60vh;
+  margin: 0 auto;
+  padding: 50px;
+}
+.modal-card h3 {
+  margin-top: -20px;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.modal-page input {
+  width: inherit;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
+  box-sizing: border-box;
+}
+.login-form {
+  height: 65%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login-form p {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+.login-form label {
+  width: 100%;
+}
+
+.no-account {
+  margin-top: 20px;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.modal-page .login-btn {
+  font-weight: bold;
+  width: 100%;
+  background-color: var(--blue);
+  border: none;
+  color: white;
+}
+.modal-page .create-account {
+  font-weight: bold;
+  width: 100%;
+  border: solid 1px var(--blue);
+  color: var(--blue);
 }
