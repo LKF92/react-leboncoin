@@ -39,7 +39,7 @@ export default function SignIn({ user, logIn }) {
       </div>
       <div className="sign-in-info">
         <h3>Créer un compte</h3>
-        <form className="sign-in-form">
+        <form className="sign-in-form" onSubmit={() => confirmSignIn()}>
           <label htmlFor="pseudo">
             <p>Pseudo *</p>
             <input
@@ -81,9 +81,7 @@ export default function SignIn({ user, logIn }) {
               politique de confidentialité
             </p>
           </div>
-          <button className="sign-in-btn" onSubmit={() => confirmSignIn()}>
-            Créer un compte personnel
-          </button>
+          <button className="sign-in-btn">Créer un compte personnel</button>
         </form>
       </div>
     </section>
