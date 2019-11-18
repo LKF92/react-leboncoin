@@ -195,32 +195,24 @@ footer > p {
   left: 25vw;
   background-color: white;
   width: 50vw;
-  height: 60vh;
+  height: 65vh;
   margin: 0 auto;
-  padding: 50px;
+  padding: 40px;
 }
 .modal-card h3 {
-  margin-top: -20px;
   text-align: center;
   font-size: 1.3rem;
 }
-
-.modal-page input {
-  width: inherit;
-  padding: 10px;
-  border-radius: 5px;
-  border: solid 1px lightgrey;
-  box-sizing: border-box;
-}
 .login-form {
   height: 65%;
-  margin-bottom: 10px;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  border-top: solid 3px var(--orange);
+  border-bottom: solid 1px lightgrey;
 }
-
 .login-form p {
   font-size: 0.9em;
   margin-bottom: 5px;
@@ -228,15 +220,21 @@ footer > p {
 .login-form label {
   width: 100%;
 }
+.login-form input {
+  width: inherit;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
+  box-sizing: border-box;
+}
 
 .no-account {
-  margin-top: 20px;
-  height: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   font-size: 0.9em;
+  height: 20%;
 }
 
 .modal-page .login-btn {
@@ -246,12 +244,10 @@ footer > p {
   border: none;
   color: white;
 }
-.modal-page .create-account {
+.create-account {
   font-weight: bold;
   width: 100%;
   border: solid 1px var(--blue);
   color: var(--blue);
-}
-hr {
-  border: solid 0.5px lightgrey;
+  margin: 10px 0;
 }

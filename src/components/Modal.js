@@ -18,7 +18,6 @@ export default function Modal() {
             Se connecter
           </button>
         </form>
-        <hr />
         <div className="no-account">
           <p>Vous n'avez pas de compte ? </p>
           <button
