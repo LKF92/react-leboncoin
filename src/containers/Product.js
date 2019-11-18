@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
 
 const Product = props => {
@@ -10,25 +8,28 @@ const Product = props => {
   const [data, setData] = useState(null);
   const params = useParams();
 
-  const fetchData = async url => {
-    const response = await axios.get(url);
-    setData(response.data);
-    setIsLoading(false);
-  };
+  const fetchData = React.useCallback(
+    async url => {
+      const response = await axios.get(
+        "https://leboncoin-api.herokuapp.com/api/offer/" + params.id
+      );
+      setData(response.data);
+      setIsLoading(false);
+    },
+    [params.id]
+  );
 
   useEffect(() => {
-    fetchData("https://leboncoin-api.herokuapp.com/api/offer/" + params.id);
-  }, []);
+    fetchData();
+  }, [fetchData]);
 
   return (
     <>
-      <Navbar />
       {console.log(data)}
       <div className="container">
         {isLoading ? <p>fetching data....</p> : <ProductCard {...data} />}
         {/* <div>contact Seller</div> */}
       </div>
-      <Footer />
     </>
   );
 };

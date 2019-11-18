@@ -16,6 +16,10 @@ a:active {
   text-decoration: none;
 }
 
+html {
+  min-height: 100vh;
+  position: relative;
+}
 body {
   font-family: "Open Sans", sans-serif;
   background-color: var(--light-grey);
@@ -144,6 +148,7 @@ button {
   margin: 30px auto;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 2.5rem;
 }
 .page-btn {
   cursor: pointer;
@@ -162,6 +167,10 @@ button {
 /****** FOOTER ******/
 footer {
   background-color: var(--dark-grey);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 10vh;
 }
 footer > p {
   line-height: 8vh;
@@ -187,6 +196,12 @@ footer > p {
   background-color: rgba(80, 80, 80, 0.8);
   position: fixed;
   z-index: 10;
+}
+.toggle-modal {
+  font-size: 2em;
+  position: absolute;
+  margin: 20px;
+  right: 0;
 }
 .modal-card {
   font-weight: bold;
@@ -245,9 +260,75 @@ footer > p {
   color: white;
 }
 .create-account {
+  text-align: center;
   font-weight: bold;
   width: 100%;
   border: solid 1px var(--blue);
+  border-radius: 5px;
   color: var(--blue);
   margin: 10px 0;
+  padding: 15px;
+}
+
+/****** SIGN IN ******/
+section.sign-in {
+  box-sizing: border-box;
+  height: 2.5rem;
+  margin: auto 50px;
+  padding: 50px;
+  box-sizing: border-box;
+  display: flex;
+}
+.why-sign-in {
+  width: 50%;
+}
+.sign-in-info {
+  width: 50%;
+}
+.sign-in-info h3 {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.4em;
+  margin-bottom: 30px;
+}
+.sign-in-info form {
+  border-top: solid 3px var(--orange);
+}
+.sign-in-form label {
+  display: block;
+  margin: 17px 0;
+}
+.sign-in-form p {
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 1em;
+  white-space: nowrap;
+}
+.sign-in-info input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: none;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
+}
+.passwords {
+  display: flex;
+  justify-content: space-between;
+}
+.passwords * {
+  width: 45%;
+  background-color: none;
+}
+.CGV {
+  display: flex;
+  margin: 16px 0;
+}
+.CGV p {
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+.sign-in-btn {
+  width: 100%;
+  background-color: var(--blue);
 }
