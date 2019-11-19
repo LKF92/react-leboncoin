@@ -17,10 +17,10 @@ a:active {
 }
 
 html {
-  min-height: 100vh;
-  position: relative;
 }
 body {
+  min-height: 100vh;
+  position: relative;
   font-family: "Open Sans", sans-serif;
   background-color: var(--light-grey);
 }

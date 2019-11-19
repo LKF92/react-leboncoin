@@ -41,9 +41,9 @@ function App() {
         <Route path="/sign-in">
           <SignIn
             user={user}
-            logIn={obj => {
-              Cookies.set("user", obj.account.username);
-              setUser({ token: obj.token, email: obj.email });
+            logIn={response => {
+              Cookies.set("user-token", response.data.token);
+              setUser({ token: response.data.token });
             }}
           />
         </Route>

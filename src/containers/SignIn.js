@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 const axios = require("axios");
 
 export default function SignIn({ user, logIn }) {
@@ -14,14 +15,15 @@ export default function SignIn({ user, logIn }) {
       axios
         .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
           email: email,
-          pseudo: pseudo,
+          username: pseudo,
           password: password
         })
         .then(
           response => {
-            logIn(response.data);
+            logIn(response);
+            alert("ca déclenche le form");
+            alert(response.data.token);
             history.push("/");
-            alert(response.data);
           },
           error => {
             console.log(error);
@@ -39,10 +41,17 @@ export default function SignIn({ user, logIn }) {
       </div>
       <div className="sign-in-info">
         <h3>Créer un compte</h3>
-        <form className="sign-in-form" onSubmit={() => confirmSignIn()}>
+        <form
+          className="sign-in-form"
+          onSubmit={event => {
+            event.preventDefault();
+            confirmSignIn();
+          }}
+        >
           <label htmlFor="pseudo">
             <p>Pseudo *</p>
             <input
+              value={pseudo}
               type="text"
               name="pseudo"
               onChange={e => setPseudo(e.target.value)}
@@ -51,6 +60,7 @@ export default function SignIn({ user, logIn }) {
           <label htmlFor="email">
             <p>Adresse email *</p>
             <input
+              value={email}
               type="text"
               name="email"
               onChange={e => setEmail(e.target.value)}
@@ -60,6 +70,7 @@ export default function SignIn({ user, logIn }) {
             <label htmlFor="password">
               <p>Mot de passe *</p>
               <input
+                value={password}
                 type="password"
                 name="password"
                 onChange={e => setPassword(e.target.value)}
@@ -68,6 +79,7 @@ export default function SignIn({ user, logIn }) {
             <label htmlFor="confirm-password">
               <p>Confirmer le mot de passe *</p>
               <input
+                value={passwordConfirmation}
                 type="password"
                 name="confirm-password"
                 onChange={e => setPasswordConfirmation(e.target.value)}

@@ -36,6 +36,7 @@ export default function Modal({ logIn, setShowModal }) {
           <label htmlFor="email">
             <p> Adresse email</p>
             <input
+              value={email}
               type="email"
               name="email"
               onChange={e => setEmail(e.target.value)}
@@ -44,6 +45,7 @@ export default function Modal({ logIn, setShowModal }) {
           <label htmlFor="password">
             <p>Mot de passe</p>
             <input
+              value={password}
               type="password"
               name="password"
               onChange={e => setPassword(e.target.value)}
