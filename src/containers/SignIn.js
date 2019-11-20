@@ -1,34 +1,50 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import {
+  CheckBoxOutlineBlankOutlined,
+  CheckBox,
+  AccessTime,
+  NotificationsActiveOutlined,
+  Visibility
+} from "@material-ui/icons";
 
 const axios = require("axios");
 
 export default function SignIn({ user, logIn }) {
-  const [email, setEmail] = useState("");
-  const [pseudo, setPseudo] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(null);
+  const [pseudo, setPseudo] = useState(null);
+  const [isAccepted, setIsAccepted] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
+  const [password, setPassword] = useState(null);
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const regexPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   const history = useHistory();
 
   const confirmSignIn = () => {
+    if (isAccepted === false) {
+      return alert("vous devez accepter les conditions d'utilisation");
+    }
     if (password === passwordConfirmation) {
-      axios
-        .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
-          email: email,
-          username: pseudo,
-          password: password
-        })
-        .then(
-          response => {
-            logIn(response);
-            alert("ca déclenche le form");
-            alert(response.data.token);
-            history.push("/");
-          },
-          error => {
-            console.log(error);
-          }
-        );
+      try {
+        axios
+          .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
+            email: email,
+            username: pseudo,
+            password: password
+          })
+          .then(
+            response => {
+              logIn(response);
+              history.push("/");
+            },
+            error => {
+              alert(error);
+              console.log(error.message);
+            }
+          );
+      } catch (error) {
+        console.log(error.message);
+      }
     } else {
       console.log("le password n'est pas le meme");
     }
@@ -37,7 +53,46 @@ export default function SignIn({ user, logIn }) {
   return (
     <section className="sign-in">
       <div className="why-sign-in">
-        <p>inscrivez vous c'est cool</p>
+        <h3>Pourquoi créer un compte ?</h3>
+        <div className="arguments-list">
+          <div className="argument-box">
+            <div className="argument-icon">
+              <AccessTime />
+            </div>
+            <div className="argument-section">
+              <h4>Gagnez du temps</h4>
+              <p>
+                Publiez vos annonces rapidement avec vos informations
+                pré-remplies chaque fois que vous souhaitez déposer une nouvelle
+                anonce.
+              </p>
+            </div>
+          </div>
+          <div className="argument-box">
+            <div className="argument-icon">
+              <NotificationsActiveOutlined />
+            </div>
+            <div className="argument-section">
+              <h4>Soyez les premiers informés</h4>
+              <p>
+                Créer des alertes Immo ou Emploi et ne manque jamais l'annonce
+                qui vous intéresse.
+              </p>
+            </div>
+          </div>
+          <div className="argument-box">
+            <div className="argument-icon">
+              <Visibility />
+            </div>
+            <div className="argument-section">
+              <h4>Visibilité</h4>
+              <p>
+                Suivez les statistiques de vos annonces (nombre de fois où votre
+                annone a été vue, nombre de contacts reçus).
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="sign-in-info">
         <h3>Créer un compte</h3>
@@ -48,52 +103,80 @@ export default function SignIn({ user, logIn }) {
             confirmSignIn();
           }}
         >
-          <label htmlFor="pseudo">
+          <label>
             <p>Pseudo *</p>
             <input
               value={pseudo}
               type="text"
-              name="pseudo"
               onChange={e => setPseudo(e.target.value)}
             />
+            {pseudo === "" && (
+              <p className="warnings">Veuillez saisir un pseudo.</p>
+            )}
           </label>
-          <label htmlFor="email">
+          <label>
             <p>Adresse email *</p>
             <input
               value={email}
               type="text"
-              name="email"
               onChange={e => setEmail(e.target.value)}
             />
+            {email === "" && (
+              <p className="warnings">Veuillez saisir une adresse email.</p>
+            )}
           </label>
           <div className="passwords">
-            <label htmlFor="password">
+            <label>
               <p>Mot de passe *</p>
               <input
                 value={password}
                 type="password"
-                name="password"
+                id="password"
                 onChange={e => setPassword(e.target.value)}
               />
+              {regexPassword.test(password) === false && (
+                <p className="warnings">
+                  Votre mot de passe doit comprendre au moins 8 caractères, une
+                  majuscule et un chiffre.
+                </p>
+              )}
             </label>
-            <label htmlFor="confirm-password">
+            <label>
               <p>Confirmer le mot de passe *</p>
               <input
                 value={passwordConfirmation}
                 type="password"
-                name="confirm-password"
+                onBlur={() => setErrorPassword(true)}
+                onFocus={() => setErrorPassword(false)}
                 onChange={e => setPasswordConfirmation(e.target.value)}
               />
+              {errorPassword && password !== passwordConfirmation && (
+                <p className="warnings">
+                  Les mots de passe saisis sont différents. Veuillez réessayer.
+                </p>
+              )}
             </label>
           </div>
           <div className="CGV">
-            <input type="checkbox" className="CGV-checkbox" />
-            <p>
-              J'ai lu et accepte les conditions générales d'utilisation et la
-              politique de confidentialité
-            </p>
+            <label htmlFor="CGV" onClick={() => setIsAccepted(!isAccepted)}>
+              {isAccepted ? <CheckBox /> : <CheckBoxOutlineBlankOutlined />}
+              <p>
+                J'ai lu et accepte les conditions générales d'utilisation et la
+                politique de confidentialité
+              </p>
+            </label>
           </div>
-          <button className="sign-in-btn">Créer un compte personnel</button>
+          {email &&
+          pseudo &&
+          password &&
+          password === passwordConfirmation &&
+          isAccepted ? (
+            <button className="sign-in-btn">Créer un compte personnel</button>
+          ) : (
+            <button className="sign-in-btn disabled">
+              Créer un compte personnel
+            </button>
+          )}
         </form>
       </div>
     </section>

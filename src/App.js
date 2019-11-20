@@ -8,12 +8,12 @@ import Footer from "../src/components/Footer";
 import Navbar from "../src/components/Navbar";
 import Modal from "../src/components/Modal";
 import SignIn from "./containers/SignIn";
+import NewOffer from "./containers/NewOffer";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
   const userCookie = Cookies.get("user");
   const [user, setUser] = useState(userCookie);
-
   return (
     <Router>
       {showModal && (
@@ -46,6 +46,9 @@ function App() {
               setUser({ token: response.data.token });
             }}
           />
+        </Route>
+        <Route path="/publish">
+          <NewOffer />
         </Route>
         <Route exact path="/">
           <Home />
