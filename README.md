@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TRY IT [HERE](https://leboincoin-react-with-cookies.netlify.com/)
+
+## Cookies and authentication
+You need to sign up to be able to post an ad. 
 
 ## Available Scripts
 
