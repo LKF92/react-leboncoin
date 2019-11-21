@@ -21,15 +21,19 @@ function App() {
           setShowModal={setShowModal}
           user={user}
           logIn={obj => {
-            Cookies.set("user", obj.account.username);
-            setUser({ token: obj.token, email: obj.email });
+            Cookies.set("user-token", obj.token);
+            setUser({
+              token: obj.token,
+              email: obj.email,
+              username: obj.account.username
+            });
           }}
         />
       )}
       <Navbar
         setShowModal={setShowModal}
         logOut={() => {
-          Cookies.remove("user");
+          Cookies.remove("user-token");
           setUser(null);
         }}
         user={user}
@@ -41,9 +45,13 @@ function App() {
         <Route path="/sign-in">
           <SignIn
             user={user}
-            logIn={response => {
-              Cookies.set("user-token", response.data.token);
-              setUser({ token: response.data.token });
+            logIn={obj => {
+              Cookies.set("user-token", obj.data.token);
+              setUser({
+                token: obj.token,
+                email: obj.email,
+                username: obj.account.username
+              });
             }}
           />
         </Route>

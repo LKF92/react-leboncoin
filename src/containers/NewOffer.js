@@ -22,7 +22,7 @@ export default function NewOffer(props) {
     data.append("files", file);
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://leboncoin-api.herokuapp.com/api/offer/publish",
         data,
         {
@@ -109,7 +109,7 @@ export default function NewOffer(props) {
             </label>
           </div>
           <div className="form-sub-section">
-            <Dropzone setFile={setFile} />
+            <Dropzone setFile={setFile} files={file} />
             {/* <label>
               <p className="form-label-text">Photo *</p>
               <input

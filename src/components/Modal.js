@@ -9,12 +9,13 @@ export default function Modal({ logIn, setShowModal }) {
 
   const confirmSignUp = () => {
     axios
-      .post("https://leboncoin-api.herokuapp.com/api/user/log_in", {
+      .post("http://localhost:3001/user/login", {
         email: email,
         password: password
       })
       .then(
         response => {
+          console.log(response.data);
           logIn(response.data);
           setShowModal(false);
           history.push("/");

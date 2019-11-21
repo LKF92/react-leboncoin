@@ -11,11 +11,11 @@ import {
 const axios = require("axios");
 
 export default function SignIn({ user, logIn }) {
-  const [email, setEmail] = useState(null);
-  const [pseudo, setPseudo] = useState(null);
+  const [email, setEmail] = useState("");
+  const [pseudo, setPseudo] = useState("");
   const [isAccepted, setIsAccepted] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
-  const [password, setPassword] = useState(null);
+  const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const regexPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   const history = useHistory();
@@ -27,7 +27,7 @@ export default function SignIn({ user, logIn }) {
     if (password === passwordConfirmation) {
       try {
         axios
-          .post("https://leboncoin-api.herokuapp.com/api/user/sign_up", {
+          .post("http://localhost:3001/user/sign-in", {
             email: email,
             username: pseudo,
             password: password
@@ -38,8 +38,8 @@ export default function SignIn({ user, logIn }) {
               history.push("/");
             },
             error => {
-              alert(error);
               console.log(error.message);
+              console.log(error.help);
             }
           );
       } catch (error) {
