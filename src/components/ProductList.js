@@ -8,7 +8,7 @@ export default function ProductList({ data }) {
         {data.map(offer => {
           return (
             <li key={offer._id}>
-              <Link className="item-card" to={"/product/" + offer._id}>
+              <Link className="item-card" to={"/offer/" + offer._id}>
                 <img
                   className="item-img"
                   src={offer.files ? offer.files[0] : ""}

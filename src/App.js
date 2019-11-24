@@ -39,7 +39,7 @@ function App() {
         user={user}
       />
       <Switch>
-        <Route path="/product/:id">
+        <Route path="/offer/:id">
           <Product />
         </Route>
         <Route path="/sign-in">

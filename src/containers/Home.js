@@ -15,19 +15,23 @@ export default function Home() {
   const [priceMin, setPriceMin] = useState(null);
   const [priceMax, setPriceMax] = useState(null);
   const [sort, setSort] = useState("");
+  const [limit, setLimit] = useState(3);
 
   const fetchData = async url => {
     const response = await axios.get(url);
     setData(response.data.offers);
-    setNumberOfPage(Math.ceil(response.data.count / 3)); //get the maximum number of page to display
+    //get the maximum number of page to display
+    if (limit === 0) {
+      setNumberOfPage(1);
+    } else {
+      setNumberOfPage(Math.ceil(response.data.count / limit));
+    }
     setIsLoading(false);
   };
 
   useEffect(() => {
-    let skip = page * 3 - 3;
-    let limit = 3;
-    let url = "http://localhost:3001/offer/with-count";
-    // ?skip=${skip}&limit=${limit}`;
+    let skip = page * limit - limit;
+    let url = `http://localhost:3001/offer/with-count?skip=${skip}&limit=${limit}`;
     if (search) {
       url += `&title=${search}`;
     }
@@ -41,7 +45,7 @@ export default function Home() {
       url += `&sort=${sort}`;
     }
     fetchData(url); // We load data when first loading the page and when pages number or query change
-  }, [page, sort, priceMax, priceMin, search]);
+  }, [limit, page, sort, priceMax, priceMin, search]);
 
   return (
     <div>

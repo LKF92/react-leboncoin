@@ -7,28 +7,23 @@ const Product = props => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState(null);
   const params = useParams();
+  console.log(params);
 
-  const fetchData = React.useCallback(
-    async url => {
-      const response = await axios.get(
-        "https://leboncoin-api.herokuapp.com/api/offer/" + params.id
-      );
-      setData(response.data);
-      setIsLoading(false);
-    },
-    [params.id]
-  );
+  const fetchData = async url => {
+    const response = await axios.get(url);
+    console.log(response);
+    setData(response.data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    fetchData("http://localhost:3001/offer/" + params.id);
+  }, [params.id]);
 
   return (
     <>
-      {console.log(data)}
       <div className="container">
         {isLoading ? <p>fetching data....</p> : <ProductCard {...data} />}
-        {/* <div>contact Seller</div> */}
       </div>
     </>
   );
