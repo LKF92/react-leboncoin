@@ -11,7 +11,7 @@ export default function ProductList({ data }) {
               <Link className="item-card" to={"/product/" + offer._id}>
                 <img
                   className="item-img"
-                  src={offer.pictures[0]}
+                  src={offer.files ? offer.files[0] : ""}
                   alt="item on offer"
                 />
                 <div className="item-description">

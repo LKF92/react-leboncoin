@@ -12,7 +12,7 @@ import NewOffer from "./containers/NewOffer";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-  const userCookie = Cookies.get("user");
+  const userCookie = Cookies.get("user-token");
   const [user, setUser] = useState(userCookie);
   return (
     <Router>
@@ -46,7 +46,7 @@ function App() {
           <SignIn
             user={user}
             logIn={obj => {
-              Cookies.set("user-token", obj.data.token);
+              Cookies.set("user-token", obj.token);
               setUser({
                 token: obj.token,
                 email: obj.email,
@@ -55,7 +55,7 @@ function App() {
             }}
           />
         </Route>
-        <Route path="/publish">
+        <Route path="/offer/create">
           <NewOffer />
         </Route>
         <Route exact path="/">

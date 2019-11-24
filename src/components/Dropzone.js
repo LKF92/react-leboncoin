@@ -32,13 +32,14 @@ const img = {
   height: "100%"
 };
 
-export default function Dropzone({ setFile }) {
+export default function Dropzone({ setFiles }) {
   const onDrop = useCallback(acceptedFiles => {
+    setFiles(acceptedFiles);
+    console.log(acceptedFiles);
     acceptedFiles.map(file => {
       Object.assign(file, {
         preview: URL.createObjectURL(file) // copy the object file and add a property preview to be abel to preview it
       });
-      setFile(file);
     });
   }, []);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({

@@ -26,7 +26,8 @@ export default function Home() {
   useEffect(() => {
     let skip = page * 3 - 3;
     let limit = 3;
-    let url = `https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=${skip}&limit=${limit}`;
+    let url = "http://localhost:3001/offer/with-count";
+    // ?skip=${skip}&limit=${limit}`;
     if (search) {
       url += `&title=${search}`;
     }

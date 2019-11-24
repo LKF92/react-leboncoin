@@ -10,7 +10,7 @@ export default function NewOffer(props) {
   const [price, setPrice] = useState("");
   const [priceError, setPriceError] = useState(false);
   const priceCheckRegex = /^[0-9]+$/;
-  const [file, setFile] = useState();
+  const [files, setFiles] = useState();
   const token = Cookie.get("user-token");
   const history = useHistory();
 
@@ -19,18 +19,16 @@ export default function NewOffer(props) {
     data.append("title", title);
     data.append("description", description);
     data.append("price", price);
-    data.append("files", file);
+    Object.keys(files).map((file, index) => {
+      data.append("file" + index, files[file]); // array of object (if multiple filess)
+    });
 
     try {
-      await axios.post(
-        "https://leboncoin-api.herokuapp.com/api/offer/publish",
-        data,
-        {
-          headers: {
-            Authorization: "Bearer " + token
-          }
+      await axios.post("http://localhost:3001/offer/create", data, {
+        headers: {
+          Authorization: "Bearer " + token
         }
-      );
+      });
       history.push("/");
     } catch (error) {
       console.log(error.message);
@@ -109,23 +107,18 @@ export default function NewOffer(props) {
             </label>
           </div>
           <div className="form-sub-section">
-            <Dropzone setFile={setFile} files={file} />
-            {/* <label>
-              <p className="form-label-text">Photo *</p>
-              <input
-                className="file-input"
-                type="file"
-                onChange={event => setFile(event.target.files[0])}
-              />
-              {file === "" && (
-                <p className="warnings">
-                  Vous devez choisir une image de ce que vous vendez.
-                </p>
-              )}
-            </label> */}
+            <Dropzone setFiles={setFiles} />
+            {/* <input
+              type="file"
+              multiple={true}
+              onChange={event => {
+                setFiles(event.target.files);
+              }}
+            /> */}
+            {/* <Dropzone setFiles={setFiles} files={files} /> */}
           </div>
           <div className="form-sub-section">
-            {price && priceError === false && title && description && file ? (
+            {price && priceError === false && title && description && files ? (
               <button className="validate-btn">Valider</button>
             ) : (
               <button className="disabled">Valider</button>

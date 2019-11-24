@@ -34,7 +34,8 @@ export default function SignIn({ user, logIn }) {
           })
           .then(
             response => {
-              logIn(response);
+              console.log(response.data);
+              logIn(response.data);
               history.push("/");
             },
             error => {

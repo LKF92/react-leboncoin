@@ -9,7 +9,7 @@ export default function Navbar({ setShowModal, user, logOut }) {
   const history = useHistory();
   const verifyUser = () => {
     if (user) {
-      history.push("/publish");
+      history.push("/offer/create");
     } else {
       setShowModal(true);
     }

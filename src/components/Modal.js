@@ -7,7 +7,7 @@ export default function Modal({ logIn, setShowModal }) {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const confirmSignUp = () => {
+  const confirmLogin = () => {
     axios
       .post("http://localhost:3001/user/login", {
         email: email,
@@ -33,7 +33,13 @@ export default function Modal({ logIn, setShowModal }) {
       </div>
       <div className="modal-card">
         <h3>Connexion</h3>
-        <form className="login-form">
+        <form
+          className="login-form"
+          onSubmit={event => {
+            event.preventDefault();
+            confirmLogin();
+          }}
+        >
           <label htmlFor="email">
             <p> Adresse email</p>
             <input
@@ -52,13 +58,7 @@ export default function Modal({ logIn, setShowModal }) {
               onChange={e => setPassword(e.target.value)}
             />
           </label>
-          <button
-            className="login-btn"
-            value="Se connecter"
-            onClick={() => {
-              confirmSignUp();
-            }}
-          >
+          <button className="login-btn" value="Se connecter">
             Se connecter
           </button>
         </form>

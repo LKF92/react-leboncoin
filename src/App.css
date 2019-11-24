@@ -26,7 +26,7 @@ body {
 }
 /****** NAVBAR ******/
 nav {
-  padding: 10px 50px;
+  padding: 0.625rem 3.125rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,7 +36,7 @@ nav {
 }
 .navbar__left-bloc {
   display: flex;
-  width: 65%;
+  width: 70%;
   justify-content: space-between;
   flex-flow: row nowrap;
 }
@@ -50,7 +50,7 @@ nav {
   background-color: inherit;
   border: none;
   outline: none;
-  margin-left: 10px;
+  margin-left: 0.625rem;
   width: 200px;
 }
 .search-bar ::-webkit-input-placeholder {
@@ -71,9 +71,9 @@ nav {
 
 /****** HOME SEACRH BOX ******/
 .home-search-box {
-  margin: 35px auto;
-  width: 810px;
-  height: 130px;
+  margin: 2.1875rem auto;
+  width: 50.625rem;
+  height: 8.125rem;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -87,28 +87,28 @@ nav {
 }
 button {
   outline: none;
-  width: 220px;
-  height: 40px;
+  width: 13.75rem;
+  height: 2.5rem;
   color: white;
   font-size: 1em;
   background-color: none;
   border-radius: 5px;
 }
 .home-search-box button {
-  margin-left: 20px;
+  margin-left: 1.25rem;
   background-color: var(--blue);
 }
 
 /****** PRODUCTS LIST *******/
 .products-lists {
-  width: 1000px;
+  width: 62.5rem;
   margin: 0 auto;
 }
 
 /****** PRODUCT CARD *******/
 .item-card {
   width: 100%;
-  height: 240px;
+  height: 15rem;
   display: flex;
   border-radius: 5px;
   background-color: white;
@@ -117,35 +117,35 @@ button {
   box-shadow: 0px 0px 15px lightgrey;
 }
 .item-img {
-  width: 240px;
+  width: 15rem;
   height: 100%;
   object-fit: cover;
 }
 .item-description {
   display: flex;
   flex-flow: column nowrap;
-  padding: 20px;
+  padding: 1.25rem;
   flex: 1 1 auto;
   justify-content: space-between;
 }
 .item-title {
-  font-size: 22px;
-  line-height: 26px;
+  font-size: 1.375rem;
+  line-height: 1.625rem;
 }
 .item-price {
-  font-size: 20px;
-  line-height: 23px;
+  font-size: 1.25rem;
+  line-height: 1.4375rem;
   color: var(--orange);
 }
 .item-date {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 140%;
 }
 
 /****** PAGES BUTTONS ******/
 .page-buttons {
   width: 50vw;
-  margin: 30px auto;
+  margin: 1.875rem auto;
   display: flex;
   justify-content: space-between;
   padding-bottom: 2.5rem;
@@ -181,9 +181,9 @@ footer > p {
 /****** PRODUCT CARD ******/
 .product-description {
   position: relative;
-  width: 700px;
-  height: 600px;
-  margin: 40px 0;
+  width: 43.75rem;
+  height: 37.5rem;
+  margin: 2.5rem 0;
   overflow: hidden;
   box-shadow: 0px 0px 15px lightgrey;
   background-color: white;
@@ -200,7 +200,7 @@ footer > p {
 .toggle-modal {
   font-size: 2em;
   position: absolute;
-  margin: 20px;
+  margin: 1.25rem;
   right: 0;
 }
 .modal-card {
@@ -212,7 +212,7 @@ footer > p {
   width: 50vw;
   height: 65vh;
   margin: 0 auto;
-  padding: 40px;
+  padding: 2.5rem;
 }
 .modal-card h3 {
   text-align: center;
@@ -220,7 +220,7 @@ footer > p {
 }
 .login-form {
   height: 65%;
-  margin: 20px 0;
+  margin: 1.25rem 0;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -237,7 +237,7 @@ footer > p {
 }
 .login-form input {
   width: inherit;
-  padding: 10px;
+  padding: 0.625rem;
   border-radius: 5px;
   border: solid 1px lightgrey;
   box-sizing: border-box;
@@ -266,8 +266,8 @@ footer > p {
   border: solid 1px var(--blue);
   border-radius: 5px;
   color: var(--blue);
-  margin: 10px 0;
-  padding: 15px;
+  margin: 0.625rem 0;
+  padding: 0.9375rem;
 }
 
 /****** SIGN IN ******/
@@ -275,9 +275,9 @@ section.sign-in {
   position: relative;
   box-sizing: border-box;
 
-  margin: auto 50px;
-  margin-bottom: 100px;
-  padding: 50px;
+  margin: auto 3.125rem;
+  margin-bottom: 6.25rem;
+  padding: 3.125rem;
   box-sizing: border-box;
   display: flex;
 }
@@ -290,7 +290,7 @@ section.sign-in {
   font-size: 1.4em;
 }
 .arguments-list {
-  margin-top: 30px;
+  margin-top: 1.875rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -298,16 +298,16 @@ section.sign-in {
 .argument-box {
   display: flex;
   align-items: center;
-  margin: 15px 0;
-  margin-right: 50px;
+  margin: 0.9375rem 0;
+  margin-right: 3.125rem;
 }
 .argument-section {
-  margin-left: 20px;
+  margin-left: 1.25rem;
 }
 .argument-section h4 {
   font-weight: bolder;
   font-size: 1em;
-  margin: 20px 0;
+  margin: 1.25rem 0;
 }
 .argument-section p {
   font-size: 0.9em;
@@ -321,7 +321,7 @@ section.sign-in {
   text-align: center;
   font-weight: bolder;
   font-size: 1.4em;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 .sign-in-info form {
   border-top: solid 3px var(--orange);
