@@ -14,7 +14,7 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [priceMin, setPriceMin] = useState(null);
   const [priceMax, setPriceMax] = useState(null);
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("price-asc");
   const [limit, setLimit] = useState(3);
 
   const fetchData = async url => {
