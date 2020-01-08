@@ -9,7 +9,7 @@ export default function Modal({ logIn, setShowModal }) {
 
   const confirmLogin = () => {
     axios
-      .post("http://localhost:3001/user/login", {
+      .post("https://leboncoin-backend.herokuapp.com/user/login", {
         email: email,
         password: password
       })

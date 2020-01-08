@@ -27,7 +27,7 @@ export default function SignIn({ user, logIn }) {
     if (password === passwordConfirmation) {
       try {
         axios
-          .post("http://localhost:3001/user/sign-in", {
+          .post("https://leboncoin-backend.herokuapp.com/user/sign-in", {
             email: email,
             username: pseudo,
             password: password
@@ -63,9 +63,8 @@ export default function SignIn({ user, logIn }) {
             <div className="argument-section">
               <h4>Gagnez du temps</h4>
               <p>
-                Publiez vos annonces rapidement avec vos informations
-                pré-remplies chaque fois que vous souhaitez déposer une nouvelle
-                anonce.
+                Publiez vos annonces rapidement avec vos informations pré-remplies chaque fois que
+                vous souhaitez déposer une nouvelle anonce.
               </p>
             </div>
           </div>
@@ -76,8 +75,7 @@ export default function SignIn({ user, logIn }) {
             <div className="argument-section">
               <h4>Soyez les premiers informés</h4>
               <p>
-                Créer des alertes Immo ou Emploi et ne manque jamais l'annonce
-                qui vous intéresse.
+                Créer des alertes Immo ou Emploi et ne manque jamais l'annonce qui vous intéresse.
               </p>
             </div>
           </div>
@@ -88,8 +86,8 @@ export default function SignIn({ user, logIn }) {
             <div className="argument-section">
               <h4>Visibilité</h4>
               <p>
-                Suivez les statistiques de vos annonces (nombre de fois où votre
-                annone a été vue, nombre de contacts reçus).
+                Suivez les statistiques de vos annonces (nombre de fois où votre annone a été vue,
+                nombre de contacts reçus).
               </p>
             </div>
           </div>
@@ -106,25 +104,13 @@ export default function SignIn({ user, logIn }) {
         >
           <label>
             <p>Pseudo *</p>
-            <input
-              value={pseudo}
-              type="text"
-              onChange={e => setPseudo(e.target.value)}
-            />
-            {pseudo === "" && (
-              <p className="warnings">Veuillez saisir un pseudo.</p>
-            )}
+            <input value={pseudo} type="text" onChange={e => setPseudo(e.target.value)} />
+            {pseudo === "" && <p className="warnings">Veuillez saisir un pseudo.</p>}
           </label>
           <label>
             <p>Adresse email *</p>
-            <input
-              value={email}
-              type="text"
-              onChange={e => setEmail(e.target.value)}
-            />
-            {email === "" && (
-              <p className="warnings">Veuillez saisir une adresse email.</p>
-            )}
+            <input value={email} type="text" onChange={e => setEmail(e.target.value)} />
+            {email === "" && <p className="warnings">Veuillez saisir une adresse email.</p>}
           </label>
           <div className="passwords">
             <label>
@@ -137,8 +123,8 @@ export default function SignIn({ user, logIn }) {
               />
               {regexPassword.test(password) === false && (
                 <p className="warnings">
-                  Votre mot de passe doit comprendre au moins 8 caractères, une
-                  majuscule et un chiffre.
+                  Votre mot de passe doit comprendre au moins 8 caractères, une majuscule et un
+                  chiffre.
                 </p>
               )}
             </label>
@@ -162,21 +148,15 @@ export default function SignIn({ user, logIn }) {
             <label htmlFor="CGV" onClick={() => setIsAccepted(!isAccepted)}>
               {isAccepted ? <CheckBox /> : <CheckBoxOutlineBlankOutlined />}
               <p>
-                J'ai lu et accepte les conditions générales d'utilisation et la
-                politique de confidentialité
+                J'ai lu et accepte les conditions générales d'utilisation et la politique de
+                confidentialité
               </p>
             </label>
           </div>
-          {email &&
-          pseudo &&
-          password &&
-          password === passwordConfirmation &&
-          isAccepted ? (
+          {email && pseudo && password && password === passwordConfirmation && isAccepted ? (
             <button className="sign-in-btn">Créer un compte personnel</button>
           ) : (
-            <button className="sign-in-btn disabled">
-              Créer un compte personnel
-            </button>
+            <button className="sign-in-btn disabled">Créer un compte personnel</button>
           )}
         </form>
       </div>

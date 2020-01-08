@@ -20,11 +20,11 @@ export default function NewOffer(props) {
     data.append("description", description);
     data.append("price", price);
     Object.keys(files).map((file, index) => {
-      data.append("file" + index, files[file]); // array of object (if multiple filess)
+      data.append("file" + index, files[file]); // array of object (if multiple files)
     });
 
     try {
-      await axios.post("http://localhost:3001/offer/create", data, {
+      await axios.post("https://leboncoin-backend.herokuapp.com/offer/create", data, {
         headers: {
           Authorization: "Bearer " + token
         }
@@ -34,6 +34,7 @@ export default function NewOffer(props) {
       console.log(error.message);
     }
   };
+
   return (
     <main id="new-offer-page">
       <div className="form-card">
@@ -48,16 +49,10 @@ export default function NewOffer(props) {
           <div className="form-sub-section">
             <label>
               <p className="form-label-text">Titre de l'annonce *</p>
-              <input
-                type="text"
-                value={title}
-                onChange={event => setTitle(event.target.value)}
-              />
+              <input type="text" value={title} onChange={event => setTitle(event.target.value)} />
               {/* We toggle a warning in case the user forget to fill this input */}
               {title === "" && (
-                <p className="warnings">
-                  Vous devez donner un titre à votre annonce.
-                </p>
+                <p className="warnings">Vous devez donner un titre à votre annonce.</p>
               )}
             </label>
           </div>

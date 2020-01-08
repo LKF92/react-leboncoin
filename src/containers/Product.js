@@ -17,7 +17,7 @@ const Product = props => {
   };
 
   useEffect(() => {
-    fetchData("http://localhost:3001/offer/" + params.id);
+    fetchData("https://leboncoin-backend.herokuapp.com/offer/" + params.id);
   }, [params.id]);
 
   return (

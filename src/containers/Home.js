@@ -31,7 +31,7 @@ export default function Home() {
 
   useEffect(() => {
     let skip = page * limit - limit;
-    let url = `http://localhost:3001/offer/with-count?skip=${skip}&limit=${limit}`;
+    let url = `https://leboncoin-backend.herokuapp.com/offer/with-count?skip=${skip}&limit=${limit}`;
     if (search) {
       url += `&title=${search}`;
     }
