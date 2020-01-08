@@ -12,7 +12,7 @@ export default function NewOffer(props) {
   const priceCheckRegex = /^[0-9]+$/;
   const [files, setFiles] = useState();
   const token = Cookie.get("user-token");
-  const history = useHistory();
+  const history = useHistory({ forceRefresh: true });
 
   const handleForm = async () => {
     const data = new FormData();
@@ -22,7 +22,6 @@ export default function NewOffer(props) {
     Object.keys(files).map((file, index) => {
       data.append("file" + index, files[file]); // array of object (if multiple files)
     });
-
     try {
       await axios.post("https://leboncoin-backend.herokuapp.com/offer/create", data, {
         headers: {
@@ -34,6 +33,8 @@ export default function NewOffer(props) {
       console.log(error.message);
     }
   };
+
+  console.log("in newOffer");
 
   return (
     <main id="new-offer-page">

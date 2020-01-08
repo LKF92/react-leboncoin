@@ -39,9 +39,9 @@ function App() {
         user={user}
       />
       <Switch>
-        <Route path="/offer/:id">
-          <Product />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/offer/create" component={NewOffer} />
+        <Route path="/offer/:id" component={Product} />
         <Route path="/sign-in">
           <SignIn
             user={user}
@@ -54,12 +54,6 @@ function App() {
               });
             }}
           />
-        </Route>
-        <Route path="/offer/create">
-          <NewOffer />
-        </Route>
-        <Route exact path="/">
-          <Home />
         </Route>
       </Switch>
       <Footer />

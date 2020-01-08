@@ -7,6 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 
 export default function Navbar({ setShowModal, user, logOut }) {
   const history = useHistory();
+
   const verifyUser = () => {
     if (user) {
       history.push("/offer/create");
@@ -20,7 +21,7 @@ export default function Navbar({ setShowModal, user, logOut }) {
         <Link to="/">
           <Logo />
         </Link>
-        <div onClick={() => verifyUser()}>
+        <div className="btn" onClick={() => verifyUser()}>
           <NewOfferBtn />
         </div>
 
@@ -29,11 +30,11 @@ export default function Navbar({ setShowModal, user, logOut }) {
 
       {/* Depending on wether or not the user is connected, we call a different component */}
       {user ? (
-        <div onClick={() => logOut()}>
+        <div className="btn" onClick={() => logOut()}>
           <LoginIcon type="Se déconnecter" />
         </div>
       ) : (
-        <div onClick={() => setShowModal(true)}>
+        <div className="btn" onClick={() => setShowModal(true)}>
           <LoginIcon type="Se Connecter" />
         </div>
       )}
