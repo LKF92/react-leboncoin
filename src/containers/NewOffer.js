@@ -25,7 +25,8 @@ export default function NewOffer(props) {
     try {
       await axios.post("https://leboncoin-backend.herokuapp.com/offer/create", data, {
         headers: {
-          Authorization: "Bearer " + token
+          Authorization: "Bearer " + token,
+          "Content-Type": "multipart/form-data"
         }
       });
       history.push("/");

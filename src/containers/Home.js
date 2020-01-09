@@ -14,10 +14,12 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [priceMin, setPriceMin] = useState(null);
   const [priceMax, setPriceMax] = useState(null);
-  const [sort, setSort] = useState("price-asc");
+  const [sort, setSort] = useState(null);
   const [limit, setLimit] = useState(3);
+  console.log("IM IN THE FUNCTION");
 
   const fetchData = async url => {
+    console.log("IM IN FETCHDATA");
     const response = await axios.get(url);
     setData(response.data.offers);
     //get the maximum number of page to display
@@ -66,6 +68,7 @@ export default function Home() {
           sort={sort}
         />
       )}
+      {console.log("IM IN RENDER")}
       <PageButtons numberOfPage={numberOfPage} page={page} setPage={setPage} />
     </div>
   );
